@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.RecordLabel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -12,6 +13,12 @@ public class SongsSearchController {
     @FXML
     private TextArea consoleText;
 
+    private RecordLabel recordLabel;
+    
+    public SongsSearchController(RecordLabel label) {
+    	recordLabel=label;
+    }
+    
     @FXML
     void searchTextFeildListener(ActionEvent event) {
 
@@ -19,6 +26,11 @@ public class SongsSearchController {
 
     @FXML
     void searchTextButton(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void initialize() {
 
     }
 }
