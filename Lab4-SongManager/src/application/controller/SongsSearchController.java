@@ -25,13 +25,29 @@ public class SongsSearchController {
     @FXML
     void searchTextFeildListener(ActionEvent event) {
     	ArrayList<Record> records=recordLabel.findRecordsBySong(songTextFeild.getText());
-    	consoleText.setText(""+records);
+    	String out="";
+    	int length=records.size();
+    	for(int i=0;i<length;i++) {
+    		out+=records.get(i);
+    		if(i+1<length) {
+    			out+="----------------------------\n";
+    		}
+    	}
+    	consoleText.setText(out);
     }
 
     @FXML
     void searchTextButton(ActionEvent event) {
     	ArrayList<Record> records=recordLabel.findRecordsBySong(songTextFeild.getText());
-    	consoleText.setText(""+records);
+    	String out="";
+    	int length=records.size();
+    	for(int i=0;i<length;i++) {
+    		out+=records.get(i);
+    		if(i+1<length) {
+    			out+="---------------------\n";
+    		}
+    	}
+    	consoleText.setText(out);
     }
     
     @FXML

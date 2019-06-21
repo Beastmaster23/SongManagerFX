@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -9,7 +10,10 @@
    <bottom>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea fx:id="consoleText" prefHeight="200.0" prefWidth="800.0" />
+            <TextArea fx:id="consoleText" prefHeight="200.0" prefWidth="800.0">
+               <font>
+                  <Font size="14.0" />
+               </font></TextArea>
          </children>
       </AnchorPane>
    </bottom>
