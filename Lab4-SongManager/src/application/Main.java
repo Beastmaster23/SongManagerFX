@@ -14,9 +14,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			RecordLabel label=new RecordLabel();	
-			label.setRecords(label.loadRecords(getClass().getResource("/resources/data/records.csv").getPath()));
-			label.loadBands(getClass().getResource("/resources/data/members.csv").getPath());
+			String bandsPath=getClass().getResource("/resources/data/members.csv").getPath(), recordsPath=getClass().getResource("/resources/data/records.csv").getPath();
+			RecordLabel label=RecordLabel.createRecordLabel("Interco Records", bandsPath, recordsPath);	
 			SongsSearchController controller=new SongsSearchController(label);
 			
 			loader.setController(controller);
@@ -25,6 +24,7 @@ public class Main extends Application {
 			
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setTitle(label.getName()+" Manager");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

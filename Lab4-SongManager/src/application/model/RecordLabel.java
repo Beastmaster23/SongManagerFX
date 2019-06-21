@@ -33,6 +33,25 @@ public class RecordLabel {
 		
 	}
 	
+	public RecordLabel(String labelName) {
+		name=labelName;
+		records=new ArrayList<Record>();
+		
+	}
+	public static RecordLabel createRecordLabel(String labelName, String bandsPath, String recordsPath) {
+		RecordLabel label=new RecordLabel(labelName);
+		label.setRecords(label.loadRecords(recordsPath));
+		label.loadBands(bandsPath);
+		return label;
+	}
+	
+	public static RecordLabel createRecordLabel(String bandsPath, String recordsPath) {
+		RecordLabel label=new RecordLabel();
+		label.setRecords(label.loadRecords(recordsPath));
+		label.loadBands(bandsPath);
+		return label;
+	}
+	
 	public Band findBandByName(String bandName) {
 		for(Record record:records) {
 			if(record.getAuthor().getName().compareTo(bandName)==0) {
