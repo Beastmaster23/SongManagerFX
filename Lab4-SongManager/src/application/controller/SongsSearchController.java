@@ -1,5 +1,8 @@
 package application.controller;
 
+import java.util.ArrayList;
+
+import application.model.Record;
 import application.model.RecordLabel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,12 +24,14 @@ public class SongsSearchController {
     
     @FXML
     void searchTextFeildListener(ActionEvent event) {
-
+    	ArrayList<Record> records=recordLabel.findRecordsBySong(songTextFeild.getText());
+    	consoleText.setText(""+records);
     }
 
     @FXML
     void searchTextButton(ActionEvent event) {
-
+    	ArrayList<Record> records=recordLabel.findRecordsBySong(songTextFeild.getText());
+    	consoleText.setText(""+records);
     }
     
     @FXML

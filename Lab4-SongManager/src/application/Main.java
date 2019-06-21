@@ -1,6 +1,7 @@
 package application;
 	
 import application.controller.SongsSearchController;
+import application.model.RecordLabel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -13,7 +14,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader=new FXMLLoader();
-			SongsSearchController controller=new SongsSearchController();
+			RecordLabel label=new RecordLabel();	
+			label.setRecords(label.loadRecords(getClass().getResource("/resources/data/records.csv").getPath()));
+			label.loadBands(getClass().getResource("/resources/data/members.csv").getPath());
+			SongsSearchController controller=new SongsSearchController(label);
+			
 			loader.setController(controller);
 			loader.setLocation(getClass().getResource("/application/view/SearchSongsView.fxml"));			
 			BorderPane root = loader.load();

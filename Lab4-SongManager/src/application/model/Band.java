@@ -1,5 +1,43 @@
 package application.model;
 
-public class Band {
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
+public class Band {
+	private String name;
+	private ArrayList<BandMember> bandMembers;
+	
+	public Band() {
+		setName("");
+		bandMembers=new ArrayList<BandMember>();
+		
+	}
+	
+	public void addMember(String member) {
+		bandMembers.add(new BandMember(member));
+	}
+	
+	public Band(String bandname) {
+		setName(bandname);
+		bandMembers=new ArrayList<BandMember>();
+		
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String toString() {
+		String output=name+"; Members:\n";
+		for(BandMember member:bandMembers) {
+			output+="\t- "+member+"\n";
+		}
+		return output;
+	}
 }
