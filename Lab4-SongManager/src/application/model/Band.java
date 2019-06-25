@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Band {
+	public ArrayList<BandMember> getBandMembers() {
+		return bandMembers;
+	}
+
+	public void setBandMembers(ArrayList<BandMember> bandMembers) {
+		this.bandMembers = bandMembers;
+	}
+
 	private String name;
 	private ArrayList<BandMember> bandMembers;
 	

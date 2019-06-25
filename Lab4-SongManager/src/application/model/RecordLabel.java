@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import application.model.utils.BandNotFoundException;
-
+/**
+ * It holds Records
+ * @author edn12
+ */
 public class RecordLabel {
 	public String getName() {
 		return name;
@@ -36,8 +38,8 @@ public class RecordLabel {
 	public RecordLabel(String labelName) {
 		name=labelName;
 		records=new ArrayList<Record>();
-		
 	}
+	
 	public static RecordLabel createRecordLabel(String labelName, String bandsPath, String recordsPath) {
 		RecordLabel label=new RecordLabel(labelName);
 		label.setRecords(label.loadRecords(recordsPath));
@@ -51,10 +53,14 @@ public class RecordLabel {
 		label.loadBands(bandsPath);
 		return label;
 	}
-	
+	/**
+	 * Finds Band by Band name
+	 * @param bandName Name of band
+	 * @return Band
+	 */
 	public Band findBandByName(String bandName) {
 		for(Record record:records) {
-			if(record.getAuthor().getName().compareTo(bandName)==0) {
+			if(record.getAuthor()!=null&&record.getAuthor().getName().compareTo(bandName)==0) {
 				//System.out.println(""+record.getAuthor());
 				return record.getAuthor();
 			}
@@ -63,6 +69,11 @@ public class RecordLabel {
 		return null;
 	}
 	
+	/**
+	 * Finds Record by song name
+	 * @param songName Name of song
+	 * @return Record
+	 */
 	public Record findRecordBySong(String songName) {
 		for(Record record:records) {
 			if(record.getName().compareTo(songName)==0) {
@@ -73,7 +84,12 @@ public class RecordLabel {
 		
 		return null;
 	}
-
+	
+	/**
+	 * Finds Records by song name
+	 * @param songName Name of song
+	 * @return ArrayList<Record>
+	 */
 	public ArrayList<Record> findRecordsBySong(String songName) {
 		ArrayList<Record> found=new ArrayList<Record>();
 		for(Record record:records) {
@@ -86,6 +102,10 @@ public class RecordLabel {
 		return found;
 	}
 	
+	/**
+	 * Add BandMembers into their respecting Band
+	 * @param bandsPath path of band file
+	 */
 	public void loadBands(String bandsPath) {
 		try {
 			File recordsFile=new File(bandsPath);
@@ -114,6 +134,11 @@ public class RecordLabel {
 		//System.out.println("Bands loaded"+records);
 	}
 	
+	/**
+	 * Add Records onto records
+	 * @param recordsPath path of Record file
+	 * @return
+	 */
 	public static ArrayList<Record> loadRecords(String recordsPath) {
 		ArrayList<Record> loadedRecords=new ArrayList<Record>();
 		try {
